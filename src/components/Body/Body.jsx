@@ -1,7 +1,7 @@
 
-export default function Body({children}) {
+export default function Body({children , color}) {
     return (
-        <div className="card-body dark-color ">
+        <div className={`card-body ${color}`}>
           {children}
 
         </div>

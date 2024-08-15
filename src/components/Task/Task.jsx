@@ -1,11 +1,12 @@
 export default function Task({taskName , onDelete ,id }) {
     function handleClick(){
+        
         onDelete(id);
         
     }
     return (
         <>
-            <div className="card bright-red-color text-white mt-2 border-5 rounded-pill">
+            <div className="card bright-red-color text-white mt-2 ">
                 <div className="card-body">
                     <div className="row">
                         <div className="col">
