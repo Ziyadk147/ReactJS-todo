@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 const http = axios.create({
-    baseURL: "http://localhost:8000/api/",
+    baseURL: "http://todo-app-react.test/api/",
     // params : {
     //     "content-type" : "application/javasciprt"
     // }

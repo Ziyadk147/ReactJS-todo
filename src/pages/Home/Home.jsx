@@ -5,6 +5,9 @@ import Body from "../../components/Body/Body"
 import Task from "../../components/Task/Task"
 import http from "../../http"
 import { useEffect, useState } from "react"
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 
 
 export default function Home() {
@@ -14,7 +17,13 @@ export default function Home() {
   useEffect(() => {
   
     fetchTasks()
-  
+    AOS.init({
+      duration: 1000, // You can change the animation duration
+      once: true, // Whether animation should happen only once
+      mirror: false, // Whether elements should animate out while scrolling past them
+    });
+    
+
   } , [])
 
 
@@ -44,7 +53,7 @@ export default function Home() {
     )
   }
   function deleteTasks(id){
-    // const messagePayload = {"id" : id}
+
     http.delete(`/tasks/${id}`).then( (res) => {
       if(res.status === 204){
       
@@ -62,10 +71,10 @@ export default function Home() {
   return (
     <MainCard >
       <Header heading="Todo-app" buttonName="Create new task" onButtonClick = {createTasks}/>
-      <Body>
+      <Body color={"dark-color"}>
         {tasks  && tasks.map((item) => (
           
-            <Task id={item.id} taskName={item.messages} onDelete={deleteTasks} ></Task>
+            <Task id={item.id} key={item.id} taskName={item.messages} onDelete={deleteTasks} ></Task>
 
           
         ))}
